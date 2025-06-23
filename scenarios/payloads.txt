@@ -9,4 +9,11 @@ history.replaceState(null, null, '../../../foo');
 document.body.innerHTML = "";
 
 
-window.location.search.replace("?","")
+
+
+
+if (window.location.search.replace("?","") === "b01829f1f013fe3bf52f026d6e053a7a"){
+    //canary detected
+} else { //this else could be removed
+    //canary not detected
+}

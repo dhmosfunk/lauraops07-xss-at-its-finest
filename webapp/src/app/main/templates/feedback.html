@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lauraops07 | feedback</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+</head>
+<body>
+    <h1>📝 Give us your feedback!</h1>
+
+    <form method="POST" action="/">
+        <input type="text" name="username" placeholder="Your username" required>
+        <textarea name="message" placeholder="Your message" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+
+    <section class="comments">
+        {% for comment in comments %}
+            <p><strong>{{ comment.username | e }}</strong>: {{ comment.message | safe }}</p>
+        {% else %}
+            <p>No feedbacks yet. Be the first to post!</p>
+        {% endfor %}
+    </section>
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        $('form').on('submit', function (e) {
+            e.preventDefault();
+
+            const username = $('input[name="username"]').val();
+            const message = $('textarea[name="message"]').val();
+
+            $.ajax({
+                type: 'POST',
+                url: '/feedback',
+                data: {
+                    username: username,
+                    message: message
+                },
+                success: function (response) {
+                    location.reload(); 
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error submitting comment:', error);
+                    alert('Failed to submit comment.');
+                }
+            });
+        });
+    });
+</script>

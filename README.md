@@ -7,11 +7,15 @@
 - [What about MotW?](#what-about-motw)
 - [Lab](#lab)
 - [Type I](#type-i---reflected-xss)
-    - [Payload Delivery](#payload-delivery)
-    - [Phishing](#phishing)
-    - [Clickfix](#clickfix)
-    - [HTML Smuggling](#html-smuggling)
+    - [I - Payload Delivery](#i---payload-delivery)
+    - [I - Phishing](#i---phishing)
+    - [I - Clickfix](#i---clickfix)
+    - [I - HTML Smuggling](#i---html-smuggling)
 - [Type II](#type-ii---stored-xss)
+    - [II - Payload Delivery](#ii---payload-delivery)
+    - [II - Phishing](#ii---phishing)
+    - [II - Clickfix](#ii---clickfix)
+    - [II - HTML Smuggling](#ii---html-smuggling)
 - [Type-0](#type-0---dom-based-xss)
 - [Extra Miles: CRLF Injection](#extra-miles-crlf-injection)
 - [Limitations](#limitations)
@@ -60,7 +64,7 @@ Before showcasing the implemented techniques certain requirements must be met fo
 - The actor already has a web server hosting JavaScript templates, as URL length restrictions prevent passing the entire payload directly.
 - The actor's web server has CORS enabled with * (wildcard) allowing anyone to fetch resources from it. For demo: [scenarios/templates/server.py](/scenarios/templates/server.py)
 
-### Payload Delivery
+### I - Payload Delivery
 Well. Even if you're not in the cybersecurity industry you might still recognize what an XSS payload looks like so it's important to obfuscate the URL or HTML.
 - URL encoding x2
 - HTML with embedded javascript containing the rediction URL encoded e.g. base64.
@@ -92,7 +96,7 @@ Example (delivery.html):
 ```
 
 
-### Phishing
+### I - Phishing
 
 The vulnerable application already has its CSS styles and DOM content loaded (including JavaScript and HTML). Therefore, to successfully perform the attack, some modifications must be made:
 - Clear the existing CSS styles
@@ -104,23 +108,31 @@ The vulnerable application already has its CSS styles and DOM content loaded (in
 
 ![phishing](assets/phishing.gif)
 
-### Clickfix
+### I - Clickfix
 
 ![phishing](assets/clickfix.gif)
 
-### HTML Smuggling
+### I - HTML Smuggling
 
 ![phishing](assets/smuggling.gif)
 
 ## Type II - Stored XSS
 
-### Payload Delivery
+### II - Payload Delivery
 
-### Phishing
+```javascript
+if (window.location.search.replace("?","") === "b01829f1f013fe3bf52f026d6e053a7a"){
+    //canary detected
+} else { //this else could be removed
+    //canary not detected
+}
+```
 
-### Clickfix
+### II - Phishing
 
-### HTML Smuggling
+### II - Clickfix
+
+### II - HTML Smuggling
 
 ## Type-0 - DOM Based XSS
 "Future work"

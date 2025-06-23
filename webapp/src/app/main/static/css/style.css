@@ -14,6 +14,66 @@ body {
     text-shadow: 1px 1px 2px #000;
 }
 
+h1 {
+    color: #ff4141;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border: 2px solid #ff2e2e;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(255, 46, 46, 0.3);
+    margin-bottom: 30px;
+    width: 90%;
+    max-width: 500px;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #2a2a2a;
+    color: #f2f2f2;
+    font-size: 1rem;
+    font-family: 'Orbitron', sans-serif;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+form button {
+    background-color: #ff4141;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+form button:hover {
+    background-color: #ffffff;
+    color: #ff4141;
+    box-shadow: 0 0 10px #ff4141;
+}
+
+section.comments {
+    width: 90%;
+    max-width: 600px;
+}
+
 p {
     background-color: #1a1a1a;
     color: #f2f2f2;
@@ -22,9 +82,13 @@ p {
     border-radius: 12px;
     box-shadow: 0 0 12px rgba(255, 46, 46, 0.3);
     font-size: 1.2rem;
-    max-width: 90%;
-    text-align: center;
+    margin-bottom: 15px;
     transition: all 0.3s ease;
+}
+
+p:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(255, 46, 46, 0.5);
 }
 
 code {
@@ -46,15 +110,13 @@ a:hover {
     text-shadow: 0 0 8px #ff4141;
 }
 
-p:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 15px rgba(255, 46, 46, 0.5);
-}
-
-/* Responsive tweaks */
 @media (max-width: 600px) {
     p {
         font-size: 1rem;
         padding: 15px 20px;
+    }
+
+    form {
+        padding: 15px;
     }
 }
