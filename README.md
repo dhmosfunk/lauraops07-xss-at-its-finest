@@ -117,8 +117,10 @@ The vulnerable application already has its CSS styles and DOM content loaded (in
 ![phishing](assets/smuggling.gif)
 
 ## Type II - Stored XSS
+Weaponizing Stored XSS - Persistent. This type of XSS occurs when user input is stored on target server e.g. database and requires no the user interaction to trigger the javascript code.
 
 ### II - Payload Delivery
+
 
 ```javascript
 if (window.location.search.replace("?","") === "b01829f1f013fe3bf52f026d6e053a7a"){
