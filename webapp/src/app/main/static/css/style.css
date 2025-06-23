@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0c0c0c;
+    color: #e0e0e0;
+    font-family: 'Orbitron', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-shadow: 1px 1px 2px #000;
+}
+
+p {
+    background-color: #1a1a1a;
+    color: #f2f2f2;
+    padding: 20px 30px;
+    border: 2px solid #ff2e2e; 
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(255, 46, 46, 0.3);
+    font-size: 1.2rem;
+    max-width: 90%;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+code {
+    background-color: #2a2a2a;
+    color: #ff4141;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+a {
+    color: #ff4141;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px #ff4141;
+}
+
+p:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(255, 46, 46, 0.5);
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+    p {
+        font-size: 1rem;
+        padding: 15px 20px;
+    }
+}

@@ -1,0 +1,9 @@
+document.getElementsByTagName('title')[0].innerHTML = 'page title';
+
+history.replaceState(null, null, '../../../foo');
+
+(document.querySelector("link[rel~='icon']") || Object.assign(document.head.appendChild(document.createElement('link')), {rel:'icon'})).href = 'https://www.microsoft.com/favicon.ico?v2';
+
+[...document.querySelectorAll('link[rel="stylesheet"]')].map(l => l.remove());
+
+document.body.innerHTML = "";

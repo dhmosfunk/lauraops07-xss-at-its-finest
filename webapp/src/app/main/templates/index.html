@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>lauraops07 XSS at its finest.</title>
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+    </head>
+    <body>
+        {% if username %}
+            <p>Hello, {{ username | safe }}!</p>
+        {% else %}
+            <p>Please provide your username in the URL, like: <code>?username=yourname</code></p>
+        {% endif %}
+    </body>
+</html>
+
