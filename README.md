@@ -113,7 +113,14 @@ The vulnerable application already has its CSS styles and DOM content loaded (in
 ![phishing](assets/smuggling.gif)
 
 ## Type II - Stored XSS
-"Future work"
+
+### Payload Delivery
+
+### Phishing
+
+### Clickfix
+
+### HTML Smuggling
 
 ## Type-0 - DOM Based XSS
 "Future work"

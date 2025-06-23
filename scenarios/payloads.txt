@@ -7,3 +7,6 @@ history.replaceState(null, null, '../../../foo');
 [...document.querySelectorAll('link[rel="stylesheet"]')].map(l => l.remove());
 
 document.body.innerHTML = "";
+
+
+window.location.search.replace("?","")
